@@ -42,6 +42,11 @@ function M.set(new_state)
   end
 end
 
+---@return bufferline.State
+function M.get()
+  return state
+end
+
 return setmetatable(M, {
   __index = function(_, k) return state[k] end,
 })

@@ -145,6 +145,11 @@ local group_state = {
   components_by_group = {},
 }
 
+--- @return bufferline.GroupState
+function M.get_group_state()
+  return group_state
+end
+
 --- Store a list of pinned buffer as a string of ids e.g. "12,10,5"
 --- in a vim.g global variable that can be persisted across vim sessions
 local function persist_pinned_buffers()
@@ -154,7 +159,7 @@ local function persist_pinned_buffers()
   end
 
   if #pinned == 0 then
-    vim.g[PINNED_KEY] = ""
+    vim.g[PINNED_KEY] = nil
   else
     vim.g[PINNED_KEY] = table.concat(pinned, ",")
   end
